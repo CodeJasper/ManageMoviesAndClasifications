@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+require("./db_config/mongooseConfig");
+
 const port = process.env.PORT || 8080;
 
 // Midlewares
