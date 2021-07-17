@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const routesConstants = require("./global_constants/routes");
 require("dotenv").config();
 require("./db_config/mongooseConfig");
 
@@ -15,8 +16,11 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 // Routes
-app.use("/peliculas", require("./routes/MovieRoutes"));
-app.use("/clasificaciones", require("./routes/ClasificationRoutes"));
+app.use(routesConstants.routesMovies.name, require("./routes/MovieRoutes"));
+app.use(
+  routesConstants.routesClasifications.name,
+  require("./routes/ClasificationRoutes")
+);
 app.use("/", (req, res) => {
   res.render("404");
 });

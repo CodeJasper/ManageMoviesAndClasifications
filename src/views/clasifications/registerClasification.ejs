@@ -1,3 +1,25 @@
-<%- include('../fragments/header') %> 
-<h1>Registrar clasificación</h1>
-<%- include('../fragments/footer') %> 
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Registrar clasificación</h5>          
+        </div>
+        <div class="modal-body">
+            <form action="/clasificaciones/registrar" method="POST" class="container mb-3 row" id="form-register-clasification">                
+                <label for="movie-name" class="form-label">Nombre de la clasificación</label>
+                <input name="name" required type="text" class="form-control" id="movie-name">                                                            
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel-button-form-register-clasification">Cancelar</button>
+          <button type="submit" form="form-register-clasification" class="btn btn-primary" id="register-button-form-register-clasification">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Añadir clasificación
+  </button>
+
+  <script src="/js/registerClasification.js" data-idcancelbutton = "cancel-button-form-register-clasification" data-idform="form-register-clasification" data-idregisterbutton="register-button-form-register-clasification"></script>
