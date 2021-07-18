@@ -1,7 +1,44 @@
-<%- include('../fragments/header') %> 
-<h1>Lista de clasificaciones</h1>
+<%- include('../fragments/header',{tabTitle:"Lista de clasificaciones", extraCss:[]}) %> 
 
-<%- include('./registerClasification') %> 
+<div class="container mt-5">
+    <h1>Lista de clasificaciones</h1>
+
+    <%- include('./registerClasification') %> 
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"><div class="d-flex justify-content-center ">#</div></th>
+            <th scope="col"> <div class="d-flex justify-content-center">Nombre</div></th>        
+            <th scope="col"><div class="d-flex justify-content-center">Opciones</div></th>        
+        </tr>
+        </thead>
+        <tbody>
+            <% let index = 1 %>
+            <% for(clasification of clasifications)  {%>         
+                <tr>
+                    <th scope="row">
+                        <div class="d-flex justify-content-center">
+                            <%= index %> </th>
+                        </div>
+                    <td>
+                        <div class="d-flex justify-content-center"> 
+                        <%= clasification.name %> 
+                        </div>
+                    </td>      
+                    <td>     
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary me-2">Actualizar</button>
+                            <button type="button" class="btn btn-danger ms-2">Eliminar</button>                    
+                        </div>               
+                    </td>                
+                </tr>
+                <% index++ %> 
+            <% } %>                     
+        </tbody>
+    </table>
+</div>
 
 <%- include('../fragments/footer') %> 
 

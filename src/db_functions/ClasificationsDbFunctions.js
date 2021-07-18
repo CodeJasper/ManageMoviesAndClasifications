@@ -6,6 +6,12 @@ async function registerClasificationToDB(clasification) {
   return response;
 }
 
+async function getClasificationsFromDB() {
+  const response = await ClasificationModel.find();
+  return response;
+}
+
 module.exports = {
   registerClasificationToDB,
+  getClasificationsFromDB,
 };

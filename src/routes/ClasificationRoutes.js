@@ -3,9 +3,15 @@ const routesConstants = require("../global_constants/routes");
 const clasificationController = require("../controllers/ClasificationsController");
 const router = express.Router();
 
-router.get(routesConstants.routesClasifications.subRoutes.list, (req, res) => {
-  res.render("clasifications/listClasifications");
-});
+router.get(
+  routesConstants.routesClasifications.subRoutes.list,
+  async (req, res) => {
+    const response = await clasificationController.getClasifications();
+    res.render("clasifications/listClasifications", {
+      clasifications: response,
+    });
+  }
+);
 
 router.get(
   routesConstants.routesClasifications.subRoutes.update,
