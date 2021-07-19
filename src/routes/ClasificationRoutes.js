@@ -13,10 +13,18 @@ router.get(
   }
 );
 
-router.get(
-  routesConstants.routesClasifications.subRoutes.update,
-  (req, res) => {
-    res.render("clasifications/updateClasification");
+router.put(
+  `${routesConstants.routesClasifications.subRoutes.update}/:id`,
+  async (req, res) => {
+    if (clasification.name !== "") {
+      const response = await clasificationController.updateClasifications(
+        req.params.id,
+        req.body
+      );
+      res.send(response);
+    } else {
+      res.send(null);
+    }
   }
 );
 
@@ -33,6 +41,15 @@ router.post(
       routesConstants.routesClasifications.name +
         routesConstants.routesClasifications.subRoutes.list
     );
+  }
+);
+
+router.delete(
+  routesConstants.routesClasifications.subRoutes.delete + "/:id",
+  async (req, res) => {
+    const id = req.params.id;
+    const response = await clasificationController.deleteClasifications(id);
+    res.send(response);
   }
 );
 

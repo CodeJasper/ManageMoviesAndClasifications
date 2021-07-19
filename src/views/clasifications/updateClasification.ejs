@@ -1,3 +1,21 @@
-<%- include('../fragments/header') %> 
-<h1>Actualizar clasificación</h1>
-<%- include('../fragments/footer') %> 
+<div class="modal fade" id="update-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Actualizar clasificación</h5>          
+        </div>
+        <div class="modal-body">
+            <form action="/clasificaciones/actualizar" method="POST" class="container mb-3 row" id="form-update-clasification">                
+                <label for="clasification-name" class="form-label" >Nombre de la clasificación</label>
+                <input name="name" required type="text" class="form-control" id="clasification-update-name">                       
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel-button-form-update-clasification">Cancelar</button>
+          <button type="submit" form="form-update-clasification" class="btn btn-primary" id="update-button-form-update-clasification">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/updateClasification.js"   data-idcancelbutton = "cancel-button-form-update-clasification" data-idform="form-update-clasification" data-idupdatebutton="update-button-form-update-clasification"></script>

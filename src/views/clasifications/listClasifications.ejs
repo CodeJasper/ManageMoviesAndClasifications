@@ -3,7 +3,9 @@
 <div class="container mt-5">
     <h1>Lista de clasificaciones</h1>
 
-    <%- include('./registerClasification') %> 
+    <%- include('./registerClasification') %>     
+    <%- include('./updateClasification') %>     
+  
 
 
     <table class="table">
@@ -29,10 +31,11 @@
                     </td>      
                     <td>     
                         <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary me-2">Actualizar</button>
-                            <button type="button" class="btn btn-danger ms-2">Eliminar</button>                    
+                            <button  data-bs-toggle="modal" data-bs-target="#update-modal" id="update-clasification-button-<%=  clasification._id %>" type="button" class="btn btn-primary me-2">Actualizar</button>
+                            <button id="delete-clasification-button-<%=  clasification._id %>" type="button" class="btn btn-danger ms-2">Eliminar</button>                    
                         </div>               
-                    </td>                
+                    </td>    
+                    <script src="/js/listClasification.js" data-idclasification="<%= clasification._id%>" data-nameclasification="<%= clasification.name%>"></script>
                 </tr>
                 <% index++ %> 
             <% } %>                     

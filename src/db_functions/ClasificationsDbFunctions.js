@@ -11,7 +11,30 @@ async function getClasificationsFromDB() {
   return response;
 }
 
+async function deletaClasificationFromDB(id) {
+  const response = await ClasificationModel.findByIdAndDelete(id);
+  return response;
+}
+
+async function updateClasificationFromDB(id, clasification) {
+  const newClasification = new ClasificationModel({
+    id,
+    name: clasification.name,
+  });
+
+  const response = await ClasificationModel.findByIdAndUpdate(
+    newClasification.id,
+    { name: newClasification.name },
+    {
+      useFindAndModify: false,
+    }
+  );
+  return response;
+}
+
 module.exports = {
   registerClasificationToDB,
   getClasificationsFromDB,
+  deletaClasificationFromDB,
+  updateClasificationFromDB,
 };
